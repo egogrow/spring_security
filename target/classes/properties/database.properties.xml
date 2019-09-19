@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd" >
+<properties>
+	<!-- log4jdbc 사용 -->
+	<entry key="db.driverClassName">net.sf.log4jdbc.sql.jdbcapi.DriverSpy</entry>
+	<entry key="db.url">ENC(vLLwGrk+NhtdRfAq5EhRUvXaMGkCouT6j9R/o5PNOa2X/ueJHDQjhkUyeScb6eZme/Vinhtw3Eicq7qHzCOI4w==)</entry>    
+    <entry key="db.username">ENC(/9eXVV4SiBLD2dW+Ad7lww==)</entry>
+    <entry key="db.password">ENC(+qboduu4l1jeVkxuvrEcxywNg5F7Ijdl)</entry>
+</properties>
