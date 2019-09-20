@@ -3,98 +3,108 @@ package com.egogrow.security.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import com.egogrow.security.common.StateEnum;
-import com.egogrow.security.vo.RoleVO;
+import com.egogrow.security.enums.RoleTypeEnum;
+import com.egogrow.security.enums.StateEnum;
 
 public class MemberDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private int id;
+	private int memberId;
 	
-	private String ssoId;
+	private String memberSsoId;
 	
-	private String password;
+	private String memberPassword;
 	
-	private String firstName;
+	private String memberName;
 	
-	private String lastName;
+	private String memberEmail;
 	
-	private String email;
+	private StateEnum memberState;
 	
-	private StateEnum state;
+	private List<MemberDTO> roleList;
 	
-	private List<RoleVO> roleList;
+	private int roleId;
+	
+	private RoleTypeEnum roleType;
 
-	public int getId() {
-		return id;
+	public int getMemberId() {
+		return memberId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
 	}
 
-	public String getSsoId() {
-		return ssoId;
+	public String getMemberSsoId() {
+		return memberSsoId;
 	}
 
-	public void setSsoId(String ssoId) {
-		this.ssoId = ssoId;
+	public void setMemberSsoId(String memberSsoId) {
+		this.memberSsoId = memberSsoId;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getMemberPassword() {
+		return memberPassword;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setMemberPassword(String memberPassword) {
+		this.memberPassword = memberPassword;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getMemberEmail() {
+		return memberEmail;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setMemberEmail(String memberEmail) {
+		this.memberEmail = memberEmail;
 	}
 
-	public String getEmail() {
-		return email;
+	public StateEnum getMemberState() {
+		return memberState;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMemberState(StateEnum memberState) {
+		this.memberState = memberState;
 	}
 
-	public StateEnum getState() {
-		return state;
-	}
-
-	public void setState(StateEnum state) {
-		this.state = state;
-	}
-
-	public List<RoleVO> getRoleList() {
+	public List<MemberDTO> getRoleList() {
 		return roleList;
 	}
 
-	public void setRoleList(List<RoleVO> roleList) {
+	public void setRoleList(List<MemberDTO> roleList) {
 		this.roleList = roleList;
+	}
+
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public RoleTypeEnum getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(RoleTypeEnum roleType) {
+		this.roleType = roleType;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", ssoId=" + ssoId + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", email=" + email + ", state=" + state + ", roleList=" + roleList + "]";
+		return "MemberDTO [memberId=" + memberId + ", memberSsoId=" + memberSsoId + ", memberPassword=" + memberPassword
+				+ ", memberName=" + memberName + ", memberEmail=" + memberEmail + ", memberState=" + memberState
+				+ ", roleList=" + roleList + ", roleId=" + roleId + ", roleType=" + roleType + "]";
 	}
-	
 	
 }

@@ -13,7 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.egogrow.security.vo.MemberVO;
+import com.egogrow.security.user.MemberInfo;
 
 @Controller
 public class HelloWorldController {
@@ -23,12 +23,12 @@ public class HelloWorldController {
 	
 	@RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
 	public String homePage(ModelMap model, Authentication auth) {
-		MemberVO vo = (MemberVO) auth.getPrincipal();
+		MemberInfo member = (MemberInfo) auth.getPrincipal();
 		System.out.println(auth);
-		System.out.println(vo);
+		System.out.println(member);
 		model.addAttribute("auth", auth );
-		model.addAttribute("vo", vo );
-		model.addAttribute("user", vo.getEmail());
+		model.addAttribute("vo", member );
+		model.addAttribute("user", member.getName());
 
 		return "welcome";
 	}

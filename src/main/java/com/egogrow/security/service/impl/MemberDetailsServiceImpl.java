@@ -7,18 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.egogrow.security.common.StateEnum;
 import com.egogrow.security.dto.MemberDTO;
+import com.egogrow.security.enums.StateEnum;
+import com.egogrow.security.service.MemberDetailsService;
 import com.egogrow.security.service.MemberService;
-import com.egogrow.security.vo.MemberVO;
-import com.egogrow.security.vo.RoleVO;
+import com.egogrow.security.user.MemberInfo;
 
 @Service("memberDetailsService")
-public class MemberDetailsServiceImpl implements UserDetailsService {
+public class MemberDetailsServiceImpl implements MemberDetailsService {
 
 	@Autowired
 	private MemberService memberService;
@@ -29,36 +28,27 @@ public class MemberDetailsServiceImpl implements UserDetailsService {
 	boolean accountNonLocked = true;
 	
 	@Override
-	public UserDetails loadUserByUsername(String ssoId)throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String ssoId) throws UsernameNotFoundException {
 		MemberDTO user = memberService.findBySsoId(ssoId);
-        System.out.println("User : "+user);
         
         if(user==null){
-            System.out.println("User not found");
             throw new UsernameNotFoundException("Username not found");
         }
         
-        boolean enabled = user.getState().equals(StateEnum.Active);
+        boolean enabled = user.getMemberState().equals(StateEnum.Active);
         
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        System.out.println("ROLES = "+user.getRoleList());
-        for(RoleVO role : user.getRoleList()){
-            System.out.println("role : "+role);
-            authorities.add(new SimpleGrantedAuthority("ROLE_"+role.getRoleType()));
-        }
-        
-//      return new User(user.getSsoId(), user.getPassword(), 
-//		enabled, true, true, true, authorities);
-   
-        MemberVO result = new MemberVO(
-			user.getSsoId(),
-			user.getPassword(), 
+        authorities.add(new SimpleGrantedAuthority("ROLE_"+user.getRoleType()));
+
+        MemberInfo result = new MemberInfo (
+			user.getMemberSsoId(),
+			user.getMemberPassword(), 
 			enabled,
 			accountNonExpired,
 			credentialsNonExpired,
 			accountNonLocked,
 			authorities,
-			user.getEmail()
+			user.getMemberName()
 		);
 
         return result;        

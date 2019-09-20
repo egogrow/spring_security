@@ -34,19 +34,13 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
  		<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></property>
-		<!-- <property name="mapperLocations" value="classpath:/mybatis/**/*Sql.xml"></property> -->
+		<property name="mapperLocations" value="classpath:/mybatis/**/*Sql.xml"></property>
 	</bean>
-	
-<!-- scan for mappers and let them be autowired -->
-<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-<property name="basePackage" value="kr.co.beany.sample, comas.jdi.dailyReport" />
-</bean> -->
-	
+
 	<!-- mapper mapping -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<!-- <property name="basePackage" value="com.egogrow.security.mapper"/> -->
 		<property name="basePackage" value="com.egogrow.security.dao"/>
-		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		<property name="annotationClass" value="org.springframework.stereotype.Repository" />
 	</bean>	
 	
 	

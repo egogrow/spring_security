@@ -4,13 +4,13 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	
-<!--     <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings> -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/> <!-- Camel 표기법 -->
+    </settings>
     
-	<mappers>
-		<package name="com.egogrow.security.dao"/>
-	</mappers>    
+	<typeAliases>
+		<typeAlias alias="memberDTO" type="com.egogrow.security.dto.MemberDTO" />
+	</typeAliases>
 
 </configuration>
 

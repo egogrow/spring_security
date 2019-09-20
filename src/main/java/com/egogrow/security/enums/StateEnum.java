@@ -1,4 +1,4 @@
-package com.egogrow.security.common;
+package com.egogrow.security.enums;
 
 public enum StateEnum {
 	Active,
