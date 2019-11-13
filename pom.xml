@@ -20,7 +20,7 @@
 		
 		<dbcp2.version>2.1.1</dbcp2.version>
 		
-		<jackson.version>2.5.0</jackson.version>
+		<jackson.version>2.10.1</jackson.version>
 		<jackson.mapper.version>1.9.13</jackson.mapper.version>
 		
 		<org.aspectj-version>1.6.10</org.aspectj-version>
